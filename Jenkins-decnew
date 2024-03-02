@@ -7,24 +7,24 @@ pipeline{
     stages{
         stage("Git Checkout"){
             steps{
-                git credentialsId: 'f7a9d66f-be68-4f7b-903c-486b2287a432', url: 'https://github.com/Aravind-GSH/myweb.git'
+                git credentialsId: '5e762fbc-b7a5-48c3-b961-bb936a16e844', url: 'https://github.com/Aravind-GSH/myweb.git'
             }
         }
         stage("Maven Build"){
             steps{
-                sh "mvn clean package-X"
+                sh "mvn clean package"
                 sh "mv target/*.war target/myweb.war"
             }
         }
         stage("deploy"){
             steps{
-                sshagent(['3083e418-001f-4420-8f79-2b2584c6b88d']) {
+                sshagent(['76910249-2735-4dde-9e6f-4e60b2e74144']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@10.0.1.24:/home/ec2-user/apache-tomcat-9.0.86/webapps
+                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@172.31.26.193:/home/ec2-user/apache-tomcat-9.0.86/webapps
                     
-                    ssh ec2-user@10.0.1.24 /home/ec2-user/apache-tomcat-9.0.86/bin/shutdown.sh
+                    ssh ec2-user@172.31.26.193 /home/ec2-user/apache-tomcat-9.0.86/bin/shutdown.sh
                     
-                    ssh ec2-user@10.0.1.24 /home/ec2-user/apache-tomcat-9.0.86/bin/startup.sh
+                    ssh ec2-user@172.31.26.193 /home/ec2-user/apache-tomcat-9.0.86/bin/startup.sh
                 
                 """
             }
