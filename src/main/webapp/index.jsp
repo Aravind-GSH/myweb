@@ -16,7 +16,7 @@
     <h1>Project: Master-slave Concept</h1>
     <h2>Team Members:</h2>
     <ul>
-        <li><span class="team-name">Pavan</span></li>
-        <li><span class="team-name">Suresh</span></li>
-        <li><span class="team-name">Jagadeesh</span></li>
-        <li><span class="team-name">Vinay</span>
+        <li><span class="team-name">GSH</span></li>
+        <li><span class="team-name">Aravind</span></li>
+        <li><span class="team-name">Madhapur</span></li>
+        <li><span class="team-name">just Changes</span>
